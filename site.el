@@ -11,6 +11,10 @@
 (keymap-set mode-specific-map "w p" 'windmove-up)
 
 (when (string-match "WSL2" operating-system-release)
+  ;; browse
+  (setq browse-url-chrome-program "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+        browse-url-browser-function 'browse-url-chrome)
+  ;; clipboard
   (setq interprogram-cut-function #'(lambda (text)
                                       (let* ((process-connection-type nil)
                                              (proc (start-process "xclip" nil

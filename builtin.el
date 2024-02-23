@@ -67,16 +67,6 @@
  transient-levels-file (tressa/var "transient/levels.el")
  transient-values-file (tressa/var "transient/values.el"))
 
-;; browse
-(setq browse-url-chrome-program "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
-      browse-url-browser-function 'browse-url-chrome)
-
-;; eglot
-(add-hook 'python-mode-hook 'eglot-ensure)
-(add-hook 'python-ts-mode-hook 'eglot-ensure)
-(with-eval-after-load 'eglot
-  (setq-default eglot-events-buffer-size 0))
-
 ;; files
 (setq auto-save-default nil
       backup-inhibited t
