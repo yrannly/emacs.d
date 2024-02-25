@@ -99,9 +99,11 @@
 
 ;; start modes
 (column-number-mode)
+(desktop-save-mode)
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
 (savehist-mode)
+(server-start)
 
 (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-13-*-*-*-c-*-fontset-custom")
 (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
