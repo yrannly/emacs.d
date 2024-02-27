@@ -6,10 +6,13 @@
 (if (functionp 'tool-bar-mode)
     (tool-bar-mode -1))
 
-(defun tressa/var (path)
-  (expand-file-name path (if (getenv "XDG_DATA_HOME")
-                             (concat (getenv "XDG_DATA_HOME") "emacs")
-                           (concat user-emacs-directory "var"))))
+(defun tressa/var (&optional path)
+  (let ((var (if (getenv "XDG_DATA_HOME")
+                 (concat (getenv "XDG_DATA_HOME") "emacs")
+               (concat user-emacs-directory "var"))))
+    (if path
+	(expand-file-name path var)
+      var)))
 
 ;; core
 (setq bidi-inhibit-bpa t
@@ -25,6 +28,15 @@
 (set-default-coding-systems 'utf-8-unix)
 (when (eq system-type 'windows-nt)
   (setq file-name-coding-system 'gbk))
+(let ((dw 1920)
+      (dh 1080)
+      (fw 993)
+      (fh 720))
+  (setq default-frame-alist
+        `((left . ,(- (/ dw 2) (/ fw 2)))
+          (top . ,(- (/ dh 2) (/ fh 2)))
+          (height . 40)
+          (width . 120))))
 (define-fringe-bitmap 'right-curly-arrow
   [#b00000000
    #b00000000
@@ -43,29 +55,22 @@
    #b00000000
    #b00000000
    #b00000000])
-(let* ((dw 1920)
-       (dh 1080)
-       (fw 640)
-       (fh 480)
-       (x  (- (/ dw 2) (/ fw 2)))
-       (y  (- (/ dh 2) (/ fh 2))))
-  (setq default-frame-alist
-        `((left . ,x)
-          (top . ,y))))
 
 ;; no-litter
 (setq
  auto-save-list-file-prefix (tressa/var "auto-save-list/saves-")
  custom-file (tressa/var "custom.el")
+ desktop-path `(,(tressa/var))
+ org-persist-directory (tressa/var "org-persist")
  package-user-dir (tressa/var "elpa")
  recentf-save-file (tressa/var "recentf")
  savehist-file (tressa/var "history")
  tramp-auto-save-directory (tressa/var "tramp/auto-save/")
  tramp-persistency-file-name (tressa/var "tramp/persistency.el")
- url-configuration-directory (tressa/var "url/")
  transient-history-file (tressa/var "transient/history.el")
  transient-levels-file (tressa/var "transient/levels.el")
- transient-values-file (tressa/var "transient/values.el"))
+ transient-values-file (tressa/var "transient/values.el")
+ url-configuration-directory (tressa/var "url/"))
 
 ;; files
 (setq auto-save-default nil
@@ -99,12 +104,10 @@
 
 ;; start modes
 (column-number-mode)
-(desktop-save-mode)
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
 (savehist-mode)
-(server-start)
 
-(create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-13-*-*-*-c-*-fontset-custom")
+(create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
 (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
 (add-to-list 'default-frame-alist '(font . "fontset-custom"))
