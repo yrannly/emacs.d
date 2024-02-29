@@ -20,7 +20,7 @@
   (("C-s" . consult-line)
    :map mode-specific-map
    ("cd" . consult-flymake)
-   ("cf" . consult-find)
+   ("cf" . consult-fd)
    ("cg" . consult-ripgrep)))
 
 (use-package expand-region
@@ -53,16 +53,6 @@
 (use-package vertico
   :init
   (vertico-mode))
-
-(use-package web-mode
-  :custom
-  (web-mode-code-indent-offset 2)
-  (web-mode-css-indent-offset 2)
-  (web-mode-enable-auto-closing t)
-  (web-mode-markup-indent-offset 2)
-  :init
-  (define-derived-mode vue-mode web-mode "Vue")
-  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode)))
 
 (use-package wgrep)
 
