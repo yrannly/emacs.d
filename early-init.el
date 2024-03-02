@@ -111,6 +111,9 @@
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
 (savehist-mode)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
 (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
