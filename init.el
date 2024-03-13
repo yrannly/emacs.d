@@ -8,13 +8,6 @@
   (:map mode-specific-map
    ("a" . avy-goto-char)))
 
-(use-package company
-  :custom
-  (company-dabbrev-downcase nil)
-  (company-minimum-prefix-length 1)
-  :init
-  (global-company-mode))
-
 (use-package consult
   :bind
   (("C-s" . consult-line)
@@ -30,8 +23,6 @@
    ("ea'" . er/mark-outside-quotes)
    ("e]" . er/mark-inside-pairs)
    ("ea]" . er/mark-outside-pairs)))
-
-(use-package flymake-eslint)
 
 (use-package marginalia
   :init

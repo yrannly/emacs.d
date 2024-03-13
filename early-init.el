@@ -11,7 +11,7 @@
 
 (defun tressa/var (&optional path)
   (let ((var (if (getenv "XDG_DATA_HOME")
-                 (concat (getenv "XDG_DATA_HOME") "emacs")
+                 (concat (getenv "XDG_DATA_HOME") "/emacs")
                (concat user-emacs-directory "var"))))
     (if path
 	(expand-file-name path var)
@@ -115,6 +115,7 @@
 (unless (server-running-p)
   (server-start))
 
-(create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
-(set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
-(add-to-list 'default-frame-alist '(font . "fontset-custom"))
+(when (functionp 'create-fontset-from-fontset-spec)
+  (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
+  (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
+  (add-to-list 'default-frame-alist '(font . "fontset-custom")))
