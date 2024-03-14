@@ -9,6 +9,9 @@
 (if (functionp 'tool-bar-mode)
     (tool-bar-mode -1))
 
+(if (functionp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+
 (defun tressa/var (&optional path)
   (let ((var (if (getenv "XDG_DATA_HOME")
                  (concat (getenv "XDG_DATA_HOME") "/emacs")
@@ -80,6 +83,19 @@
 (setq auto-save-default nil
       backup-inhibited t
       make-backup-files nil)
+
+;; frame
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
+
+;; org
+(with-eval-after-load 'org
+  (setq org-hide-emphasis-markers t
+        org-pretty-entities t))
 
 ;; package
 (setq package-initialized nil
