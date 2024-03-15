@@ -36,7 +36,9 @@
 
 (use-package org-modern
   :hook
-  (org-mode . global-org-modern-mode))
+  (org-mode . global-org-modern-mode)
+  :custom
+  (org-modern-hide-stars " "))
 
 (use-package treesit-auto
   :config
