@@ -67,14 +67,4 @@
 (keymap-set mode-specific-map "w p" 'windmove-up)
 
 (when (string-match "WSL2" operating-system-release)
-  ;; browse
-  (setq browse-url-chrome-program "/mnt/d/apps/firefox/firefox.exe"
-        browse-url-browser-function 'browse-url-chrome)
-  ;; clipboard
-  (setq interprogram-cut-function #'(lambda (text)
-                                      (let* ((process-connection-type nil)
-                                             (proc (start-process "xclip" nil
-                                                                  "/mnt/c/Windows/System32/clip.exe")))
-                                        (process-send-string proc text)
-                                        (process-send-eof proc)))
-        interprogram-paste-function #'(lambda nil (shell-command-to-string "/mnt/d/apps/win32yank.exe -o --lf"))))
+  (tressa/require 'wsl-path))
