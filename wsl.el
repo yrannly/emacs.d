@@ -121,7 +121,7 @@ with two filenames)."
 (setq interprogram-cut-function #'(lambda (text)
                                     (let* ((process-connection-type nil)
                                            (proc (start-process "xclip" nil
-                                                                "/mnt/c/Windows/System32/clip.exe")))
+                                                                "/mnt/d/apps/win32yank.exe" "-i")))
                                       (process-send-string proc text)
                                       (process-send-eof proc)))
       interprogram-paste-function #'(lambda nil (shell-command-to-string "/mnt/d/apps/win32yank.exe -o --lf")))

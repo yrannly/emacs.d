@@ -122,6 +122,9 @@
 ;; vc
 (setq vc-follow-symlinks t)
 
+;; xref
+(setq xref-search-program 'ripgrep)
+
 ;; start modes
 (column-number-mode)
 (global-auto-revert-mode)

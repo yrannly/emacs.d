@@ -16,6 +16,11 @@
    ("cf" . consult-fd)
    ("cg" . consult-ripgrep)))
 
+(use-package deadgrep
+  :bind
+  (:map mode-specific-map
+   ("d" . deadgrep)))
+
 (use-package expand-region
   :bind
   (:map mode-specific-map
@@ -67,4 +72,4 @@
 (keymap-set mode-specific-map "w p" 'windmove-up)
 
 (when (string-match "WSL2" operating-system-release)
-  (tressa/require 'wsl-path))
+  (tressa/require 'wsl))
