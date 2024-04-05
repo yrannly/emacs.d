@@ -53,12 +53,6 @@
   (completion-category-defaults nil)
   (completion-category-overrides '((file (styles partial-completion)))))
 
-(use-package org-modern
-  :hook
-  (org-mode . global-org-modern-mode)
-  :custom
-  (org-modern-hide-stars " "))
-
 (use-package treesit-auto
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
