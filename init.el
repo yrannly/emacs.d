@@ -16,10 +16,24 @@
    ("cf" . consult-fd)
    ("cg" . consult-ripgrep)))
 
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  :init
+  (global-corfu-mode))
+
+(use-package corfu-terminal
+  :init
+  (corfu-terminal-mode))
+
 (use-package deadgrep
   :bind
   (:map mode-specific-map
    ("d" . deadgrep)))
+
+(use-package eglot
+  :hook
+  (python-ts-mode . eglot-ensure))
 
 (use-package expand-region
   :bind
