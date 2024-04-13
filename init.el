@@ -13,18 +13,7 @@
   (("C-s" . consult-line)
    :map mode-specific-map
    ("cd" . consult-flymake)
-   ("cf" . consult-fd)
-   ("cg" . consult-ripgrep)))
-
-(use-package corfu
-  :custom
-  (corfu-auto t)
-  :init
-  (global-corfu-mode))
-
-(use-package corfu-terminal
-  :init
-  (corfu-terminal-mode))
+   ("cf" . consult-fd)))
 
 (use-package deadgrep
   :bind
@@ -74,10 +63,6 @@
 (keymap-set mode-specific-map "f" 'indent-region)
 (keymap-set mode-specific-map "r" 'recentf-open)
 (keymap-set mode-specific-map "s" 'set-mark-command)
-(keymap-set mode-specific-map "w b" 'windmove-left)
-(keymap-set mode-specific-map "w f" 'windmove-right)
-(keymap-set mode-specific-map "w n" 'windmove-down)
-(keymap-set mode-specific-map "w p" 'windmove-up)
 
 (when (string-match "WSL2" operating-system-release)
   (tressa/require 'wsl))

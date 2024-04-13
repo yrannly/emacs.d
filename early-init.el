@@ -63,7 +63,7 @@
    #b00000000])
 
 ;; no-litter
-(setopt
+(setq
  auto-save-list-file-prefix (tressa/var "auto-save-list/saves-")
  custom-file (tressa/var "custom.el")
  desktop-path `(,(tressa/var))
@@ -122,6 +122,9 @@
 ;; vc
 (setq vc-follow-symlinks t)
 
+;; windmove
+(windmove-default-keybindings)
+
 ;; xref
 (setq xref-search-program 'ripgrep)
 
@@ -129,10 +132,8 @@
 (column-number-mode)
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
+(repeat-mode)
 (savehist-mode)
-(require 'server)
-(unless (server-running-p)
-  (server-start))
 
 (when (functionp 'create-fontset-from-fontset-spec)
   (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
