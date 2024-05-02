@@ -4,6 +4,7 @@
 ;; disable-modes
 (line-number-mode -1)
 (menu-bar-mode -1)
+(show-paren-mode -1)
 
 ;; disable with test
 (if (functionp 'tool-bar-mode)
@@ -13,9 +14,7 @@
     (scroll-bar-mode -1))
 
 (defun tressa/var (&optional path)
-  (let ((var (if (getenv "XDG_DATA_HOME")
-                 (concat (getenv "XDG_DATA_HOME") "/emacs")
-               (concat user-emacs-directory "var"))))
+  (let ((var (concat user-emacs-directory "var")))
     (if path
 	(expand-file-name path var)
       var)))
@@ -132,7 +131,6 @@
 (column-number-mode)
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
-(repeat-mode)
 (savehist-mode)
 
 (when (functionp 'create-fontset-from-fontset-spec)
