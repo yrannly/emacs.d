@@ -63,6 +63,7 @@
 
 ;; no-litter
 (setq
+ auth-sources `(,(tressa/var "authinfo"))
  auto-save-list-file-prefix (tressa/var "auto-save-list/saves-")
  custom-file (tressa/var "custom.el")
  desktop-path `(,(tressa/var))
@@ -118,6 +119,9 @@
 ;; syntax
 (setq syntax-wholeline-max 1000)
 
+;; treesit
+(setq c-ts-mode-indent-offset 4)
+
 ;; vc
 (setq vc-follow-symlinks t)
 
@@ -137,5 +141,3 @@
   (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
   (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
   (add-to-list 'default-frame-alist '(font . "fontset-custom")))
-
-(load-theme 'modus-vivendi-deuteranopia t)

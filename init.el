@@ -8,6 +8,10 @@
   (:map mode-specific-map
    ("a" . avy-goto-char)))
 
+(use-package company
+  :init
+  (global-company-mode))
+
 (use-package consult
   :bind
   (("C-s" . consult-line)
@@ -44,8 +48,8 @@
 
 (use-package treesit-auto
   :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode)
+  (treesit-auto-add-to-auto-mode-alist 'all)
   :init
   (require 'treesit-auto))
 
