@@ -13,12 +13,6 @@
 (if (functionp 'scroll-bar-mode)
     (scroll-bar-mode -1))
 
-(defun tressa/var (&optional path)
-  (let ((var (concat user-emacs-directory "var")))
-    (if path
-	(expand-file-name path var)
-      var)))
-
 ;; core
 (setq bidi-inhibit-bpa t
       create-lockfiles nil
@@ -61,23 +55,8 @@
    #b00000000
    #b00000000])
 
-;; no-litter
-(setq
- auth-sources `(,(tressa/var "authinfo"))
- auto-save-list-file-prefix (tressa/var "auto-save-list/saves-")
- custom-file (tressa/var "custom.el")
- desktop-path `(,(tressa/var))
- org-persist-directory (tressa/var "org-persist")
- package-user-dir (tressa/var "elpa")
- recentf-save-file (tressa/var "recentf")
- savehist-file (tressa/var "history")
- tramp-auto-save-directory (tressa/var "tramp/auto-save/")
- tramp-persistency-file-name (tressa/var "tramp/persistency.el")
- transient-history-file (tressa/var "transient/history.el")
- transient-levels-file (tressa/var "transient/levels.el")
- transient-values-file (tressa/var "transient/values.el")
- treesit-extra-load-path `(,(tressa/var "treesit"))
- url-configuration-directory (tressa/var "url/"))
+;; cus-deit.el
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; files
 (setq auto-save-default nil
