@@ -3,5 +3,6 @@
 /projects
 /server/
 /tree-sitter/
+custom.el
 history
 recentf
