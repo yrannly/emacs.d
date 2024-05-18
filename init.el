@@ -8,10 +8,6 @@
   (:map mode-specific-map
    ("a" . avy-goto-char)))
 
-(use-package citre
-  :init
-  (require 'citre-config))
-
 (use-package company
   :init
   (global-company-mode))
