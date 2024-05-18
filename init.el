@@ -24,10 +24,6 @@
   (:map mode-specific-map
    ("d" . deadgrep)))
 
-(use-package eglot
-  :hook
-  (python-ts-mode . eglot-ensure))
-
 (use-package expand-region
   :bind
   (:map mode-specific-map
