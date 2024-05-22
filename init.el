@@ -24,6 +24,11 @@
   (:map mode-specific-map
    ("d" . deadgrep)))
 
+(use-package embark
+  :bind
+  (:map mode-specific-map
+   ("." . embark-act)))
+
 (use-package expand-region
   :bind
   (:map mode-specific-map
