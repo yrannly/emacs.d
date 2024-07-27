@@ -1,3 +1,4 @@
+.authinfo
 /elpa/
 /org-persist/
 /projects
@@ -6,3 +7,4 @@
 custom.el
 history
 recentf
+tramp

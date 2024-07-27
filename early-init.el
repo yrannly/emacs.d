@@ -57,6 +57,7 @@
 
 ;; cus-deit.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq auth-sources `(,(expand-file-name ".authinfo" user-emacs-directory)))
 
 ;; files
 (setq auto-save-default nil
