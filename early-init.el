@@ -23,7 +23,8 @@
       read-process-output-max (* 1024 1024)
       ring-bell-function 'ignore
       use-short-answers t)
-(setq-default bidi-display-reordering nil)
+(setq-default bidi-display-reordering nil
+              bidi-paragraph-direction 'left-to-right)
 (set-default-coding-systems 'utf-8-unix)
 (when (eq system-type 'windows-nt)
   (setq file-name-coding-system 'gbk))
@@ -79,6 +80,7 @@
 
 ;; package
 (setq package-initialized nil
+      package-check-signature nil
       package-archives '(("gnu"    . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/gnu/")
                          ("nongnu" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/nongnu/")
                          ("melpa"  . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/melpa/")))
