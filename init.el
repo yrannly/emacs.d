@@ -71,3 +71,13 @@
 
 (when (string-match "WSL2" operating-system-release)
   (tressa/require 'wsl))
+
+(with-eval-after-load 'gnus
+  (setq
+   gnus-always-read-dribble-file t
+   gnus-home-directory "~/.cache/gnus"
+   gnus-directory (expand-file-name "News" gnus-home-directory)
+   gnus-select-method '(nnimap "qq"
+                               (nnimap-address "imap.qq.com")
+                               (nnimap-server-port 993)
+                               (nnimap-stream ssl))))

@@ -73,6 +73,9 @@
   (set-face-foreground face (face-attribute 'default :background)))
 (set-face-background 'fringe (face-attribute 'default :background))
 
+;; message
+(setq message-directory "~/.cache/Mail")
+
 ;; org
 (with-eval-after-load 'org
   (setq org-hide-emphasis-markers t
