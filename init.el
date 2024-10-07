@@ -41,6 +41,10 @@
   :init
   (marginalia-mode))
 
+(use-package markdown-ts-mode
+  :mode
+  ("\\.md\\'" . markdown-ts-mode))
+
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
