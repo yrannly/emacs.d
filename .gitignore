@@ -1,5 +1,6 @@
 .authinfo
 /auto-save-list/
+/eln-cache/
 /elpa/
 /org-persist/
 /projects

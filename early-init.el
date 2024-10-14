@@ -26,6 +26,7 @@
 (setq-default bidi-display-reordering nil
               bidi-paragraph-direction 'left-to-right)
 (set-default-coding-systems 'utf-8-unix)
+(set-language-environment "UTF-8")
 (when (eq system-type 'windows-nt)
   (setq file-name-coding-system 'gbk))
 (let ((dw 1920)
@@ -123,6 +124,7 @@
 (savehist-mode)
 
 (when (functionp 'create-fontset-from-fontset-spec)
-  (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-14-*-*-*-c-*-fontset-custom")
+  (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-12-*-*-*-c-*-fontset-custom")
+  (set-fontset-font "fontset-custom" 'ascii (font-spec :family "IBM Plex Mono") nil 'prepend)
   (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
   (add-to-list 'default-frame-alist '(font . "fontset-custom")))
