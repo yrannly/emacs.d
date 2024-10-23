@@ -8,9 +8,9 @@
   (:map mode-specific-map
    ("a" . avy-goto-char)))
 
-(use-package company
+(use-package cape
   :init
-  (global-company-mode))
+  (add-hook 'completion-at-point-functions #'cape-file))
 
 (use-package consult
   :bind
@@ -18,6 +18,13 @@
    :map mode-specific-map
    ("cd" . consult-flymake)
    ("cf" . consult-fd)))
+
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  (corfu-quit-no-match 'separator)
+  :init
+  (global-corfu-mode))
 
 (use-package deadgrep
   :bind
