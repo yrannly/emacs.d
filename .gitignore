@@ -5,6 +5,7 @@
 /org-persist/
 /projects
 /server/
+/transient/
 /tree-sitter/
 custom.el
 history

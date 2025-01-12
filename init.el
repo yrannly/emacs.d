@@ -17,7 +17,8 @@
   (("C-s" . consult-line)
    :map mode-specific-map
    ("cd" . consult-flymake)
-   ("cf" . consult-fd)))
+   ("cf" . consult-fd)
+   ("cg" . consult-ripgrep)))
 
 (use-package corfu
   :custom
@@ -43,6 +44,8 @@
    ("ea'" . er/mark-outside-quotes)
    ("e]" . er/mark-inside-pairs)
    ("ea]" . er/mark-outside-pairs)))
+
+(use-package magit)
 
 (use-package marginalia
   :init
