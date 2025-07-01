@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; pack
 (require 'use-package-ensure)
 (setq use-package-always-defer t
@@ -31,6 +33,10 @@
   :bind
   (:map mode-specific-map
    ("d" . deadgrep)))
+
+(use-package eglot
+  :hook
+  ((c-ts-mode c++-ts-mode) . eglot-ensure))
 
 (use-package embark
   :bind

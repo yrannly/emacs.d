@@ -1,5 +1,12 @@
+;; -*- lexical-binding: t; -*-
+
 (defun tressa/require (file)
   (load (expand-file-name (symbol-name file) user-emacs-directory) t t))
+
+(defun tressa/var (path)
+  (expand-file-name path (if (getenv "XDG_DATA_HOME")
+                             (expand-file-name "emacs" (getenv "XDG_DATA_HOME"))
+                           (expand-file-name "var" user-emacs-directory))))
 
 ;; disable-modes
 (line-number-mode -1)
@@ -57,9 +64,20 @@
    #b00000000
    #b00000000])
 
-;; cus-deit.el
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(setq auth-sources `(,(expand-file-name ".authinfo" user-emacs-directory)))
+;; no-litter
+(setq
+ auth-sources `(,(tressa/var "authinfo"))
+ auto-save-list-file-prefix (tressa/var "auto-save-list/saves-")
+ custom-file (tressa/var "custom.el")
+ package-user-dir (tressa/var "elpa")
+ recentf-save-file (tressa/var "recentf")
+ savehist-file (tressa/var "history")
+ tramp-auto-save-directory (tressa/var "tramp/auto-save/")
+ tramp-persistency-file-name (tressa/var "tramp/persistency.el")
+ transient-history-file (tressa/var "transient/history.el")
+ transient-levels-file (tressa/var "transient/levels.el")
+ transient-values-file (tressa/var "transient/values.el")
+ url-configuration-directory (tressa/var "url/"))
 
 ;; files
 (setq auto-save-default nil
