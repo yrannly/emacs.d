@@ -43,6 +43,13 @@
   (:map mode-specific-map
    ("." . embark-act)))
 
+(use-package eshell
+  :init
+  (require 'esh-mode)
+  :bind
+  (:map eshell-mode-map
+        ("C-r" . consult-history)))
+
 (use-package expand-region
   :bind
   (:map mode-specific-map
@@ -66,6 +73,11 @@
   (completion-styles '(orderless basic))
   (completion-category-defaults nil)
   (completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package org
+  :custom
+  (org-hide-emphasis-markers t)
+  (org-pretty-entities t))
 
 (use-package treesit-auto
   :config

@@ -95,11 +95,6 @@
 ;; message
 (setq message-directory "~/.cache/Mail")
 
-;; org
-(with-eval-after-load 'org
-  (setq org-hide-emphasis-markers t
-        org-pretty-entities t))
-
 ;; package
 (setq package-initialized nil
       package-check-signature nil
@@ -146,3 +141,5 @@
   (set-fontset-font "fontset-custom" 'ascii (font-spec :family "IBM Plex Mono") nil 'prepend)
   (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
   (add-to-list 'default-frame-alist '(font . "fontset-custom")))
+
+(load-theme 'modus-operandi-tinted)
