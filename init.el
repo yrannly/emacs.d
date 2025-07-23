@@ -22,6 +22,20 @@
    ("cf" . consult-fd)
    ("cg" . consult-ripgrep)))
 
+(use-package copilot
+  :bind (:map copilot-completion-map
+              ("TAB" . copilot-accept-completion)
+              ("C-TAB" . copilot-accept-completion-by-word)
+              ("C-n" . copilot-next-completion)
+              ("C-p" . copilot-previous-completion))
+  :custom
+  (copilot-network-proxy '(:host "127.0.0.1" :port 20171 :rejectUnauthorized :json-false))
+  :hook
+  (c++-ts-mode . copilot-mode)
+  (c-ts-mode . copilot-mode)
+  (emacs-lisp-mode . copilot-mode)
+  (python-ts-mode . copilot-mode))
+
 (use-package corfu
   :custom
   (corfu-auto t)
@@ -33,10 +47,6 @@
   :bind
   (:map mode-specific-map
    ("d" . deadgrep)))
-
-(use-package eglot
-  :hook
-  ((c-ts-mode c++-ts-mode) . eglot-ensure))
 
 (use-package embark
   :bind

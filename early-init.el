@@ -69,7 +69,9 @@
  auth-sources `(,(tressa/var "authinfo"))
  auto-save-list-file-prefix (tressa/var "auto-save-list/saves-")
  custom-file (tressa/var "custom.el")
+ org-persist-directory (tressa/var "org-persist/")
  package-user-dir (tressa/var "elpa")
+ project-list-file (tressa/var "projects.eld")
  recentf-save-file (tressa/var "recentf")
  savehist-file (tressa/var "history")
  tramp-auto-save-directory (tressa/var "tramp/auto-save/")
@@ -78,6 +80,13 @@
  transient-levels-file (tressa/var "transient/levels.el")
  transient-values-file (tressa/var "transient/values.el")
  url-configuration-directory (tressa/var "url/"))
+
+(when (and (fboundp 'startup-redirect-eln-cache)
+           (fboundp 'native-comp-available-p)
+           (native-comp-available-p))
+  (startup-redirect-eln-cache
+   (convert-standard-filename
+    (tressa/var  "eln-cache/"))))
 
 ;; files
 (setq auto-save-default nil
