@@ -6,7 +6,9 @@
 (defun tressa/var (path)
   (expand-file-name path (if (getenv "XDG_DATA_HOME")
                              (expand-file-name "emacs" (getenv "XDG_DATA_HOME"))
-                           (expand-file-name "var" user-emacs-directory))))
+                           (if (string= system-type "gnu/linux")
+                               (expand-file-name "emacs" "~/.local/share")
+                             (expand-file-name "var" user-emacs-directory)))))
 
 ;; disable-modes
 (line-number-mode -1)
@@ -145,10 +147,10 @@
 (global-display-line-numbers-mode)
 (savehist-mode)
 
-(when (functionp 'create-fontset-from-fontset-spec)
-  (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-12-*-*-*-c-*-fontset-custom")
-  (set-fontset-font "fontset-custom" 'ascii (font-spec :family "IBM Plex Mono") nil 'prepend)
-  (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
-  (add-to-list 'default-frame-alist '(font . "fontset-custom")))
+;; (when (functionp 'create-fontset-from-fontset-spec)
+;;   (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-12-*-*-*-c-*-fontset-custom")
+;;  (set-fontset-font "fontset-custom" 'ascii (font-spec :family "IBM Plex Mono") nil 'prepend)
+;;  (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
+;;  (add-to-list 'default-frame-alist '(font . "fontset-custom")))
 
 (load-theme 'modus-operandi-tinted)
