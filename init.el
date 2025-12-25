@@ -88,6 +88,10 @@
 
 (use-package wgrep)
 
+(use-package xclip
+  :init
+  (xclip-mode))
+
 ;;; site
 (keymap-global-unset "C-@")
 (keymap-global-unset "C-M-\\")
