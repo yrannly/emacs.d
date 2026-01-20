@@ -147,10 +147,12 @@
 (global-display-line-numbers-mode)
 (savehist-mode)
 
-;; (when (functionp 'create-fontset-from-fontset-spec)
-;;   (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-12-*-*-*-c-*-fontset-custom")
-;;  (set-fontset-font "fontset-custom" 'ascii (font-spec :family "IBM Plex Mono") nil 'prepend)
-;;  (set-fontset-font "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei") nil 'prepend)
-;;  (add-to-list 'default-frame-alist '(font . "fontset-custom")))
+(defun set-fontset-font-available (fontset characters font-spec)
+  (when (find-font font-spec)
+    (set-fontset-font fontset characters font-spec nil 'prepend)))
 
-(load-theme 'modus-operandi-tinted)
+(when (functionp 'create-fontset-from-fontset-spec)
+  (create-fontset-from-fontset-spec "-*-Cascadia Mono-normal-r-*-*-12-*-*-*-c-*-fontset-custom")
+ (set-fontset-font-available "fontset-custom" 'ascii (font-spec :family "IBM Plex Mono"))
+ (set-fontset-font-available "fontset-custom" 'han (font-spec :family "LXGW Neo Xihei"))
+ (add-to-list 'default-frame-alist '(font . "fontset-custom")))
